@@ -17,7 +17,7 @@ type concatCommand struct {
 func (concat *concatCommand) Execute(loop engine.Handler) {
 	var res []string
 	res = append(res, concat.arg1, concat.arg2)
-	fmt.Println(strings.Join(res, ""))
+	loop.Post(&printCommand{arg: strings.Join(res, "")})
 }
 
 func (p printCommand) Execute(loop engine.Handler) {
